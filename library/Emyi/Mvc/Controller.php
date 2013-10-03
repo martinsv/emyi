@@ -41,6 +41,16 @@ abstract class Controller
     ];
 
     /**
+     *
+     */
+    public $action;
+
+    /**
+     *
+     */
+    public $controller;
+
+    /**
      * A reflection for this object
      * @var Emyi\Util\ReflectionClass
      */
@@ -68,9 +78,10 @@ abstract class Controller
     /**
      * ctor
      */
-    final public function __construct(Request $request, $action)
+    final public function __construct(Request $request, $action, $controller = Router::DEFAULT_CONTROLLER)
     {
         $this->action     = $action;
+        $this->controller = $controller;
         $this->request    = $request;
         $this->response   = new Response();
         $this->reflection = new ReflectionClass($this);
