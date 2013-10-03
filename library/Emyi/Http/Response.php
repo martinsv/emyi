@@ -83,10 +83,10 @@ class Response extends Base
     public static function fromString($string)
     {
         $response = new static();
-        $lines = explode('\r\n', $string);
+        $lines = explode("\r\n", $string);
 
         if (!is_array($lines) || count($lines) == 1) {
-            $lines = explode('\n', $string);
+            $lines = explode("\n", $string);
         }
 
         $firstLine = array_shift($lines);
@@ -124,10 +124,6 @@ class Response extends Base
             } else {
                 $content[] = $nextLine;
             }
-        }
-
-        if ($headers) {
-            $response->headers = implode("\r\n", $headers);
         }
 
         if ($content) {
@@ -180,7 +176,7 @@ class Response extends Base
             );
         }
 
-        $this->status_code = $code;
+        $this->status_code = (int) $code;
         return $this;
     }
 
