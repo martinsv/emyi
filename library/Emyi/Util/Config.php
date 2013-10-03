@@ -9,7 +9,6 @@
 namespace Emyi\Util;
 
 use ArrayObject;
-use Emyi\Db;
 
 /**
  * Main config class
@@ -188,10 +187,6 @@ class Config
                     continue;
                 }
             }
-
-            Db\Config::initialize(function ($cfg) use ($connections) {
-              $cfg->setConnections($connections);
-            });
         }
 
         return self::$defaults;
