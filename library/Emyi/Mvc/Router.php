@@ -94,7 +94,7 @@ class Router {
             throw new LogicException("Class `$class' not found", 503);
         }
 
-        $controller = new $class($this->request, $this->action);
+        $controller = new $class($this->request, $this->action, $this->controller);
 
         if ($controller instanceof Controller) {
             return call_user_func_array([$controller, 'execute'], $this->params);
@@ -197,7 +197,7 @@ class Router {
             $request_uri = $this->request->getPathInfo();
         }
 
-        $request_uri = "/" . ltrim($request_uri, "/");
+        $request_uri = '/' . ltrim($request_uri, '/');
 
         foreach (self::$routes as $rule => $route) {
             $this->params     = [];
@@ -222,14 +222,24 @@ class Router {
                 }
 
                 if (isset($this->params['action'])) {
-                    $this->action = $this->params['action'];
+                    if ('$' === $this->params['action'][0]) {
+                        $this->action = $param_values[$this->params['action'][1]];
+                    } else {
+                        $this->action = $this->params['action'];
+                    }
+
                     unset($this->params['action']);
                 }
 
                 if (!array_key_exists('controller', $this->params)) {
                     $this->controller = self::DEFAULT_CONTROLLER;
                 } else {
-                    $this->controller = $this->params['controller'];
+                    if ('$' === $this->params['controller'][0]) {
+                        $this->controller = $param_values[$this->params['controller'][1]];
+                    } else {
+                        $this->controller = $this->params['controller'];
+                    }
+
                     unset($this->params['controller']);
                 }
 
