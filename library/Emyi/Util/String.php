@@ -163,8 +163,11 @@ class String
      */
     public static function phpize($str, $replacement = '_')
     {
-        return preg_replace(
-            '/([A-Z-\s]+)/e', "'$replacement'.strtolower('\\1')", lcfirst($str)
+        return preg_replace_callback(
+            '/([A-Z-\s]+)/',
+            function ($match) use ($replacement) {
+                return $replacement . strtolower($match[1]);
+            }, lcfirst($str)
         );
     }
 
