@@ -68,7 +68,7 @@ class Router {
      */
     public static function dispatch(Request $request)
     {
-        $uri = str_replace(dirname($_SERVER['PHP_SELF']), '', $request->getPathInfo());
+        $uri = str_replace(dirname($_SERVER['PHP_SELF']), '', self::getPathInfo());
         return (new static($request))->execute($uri);
     }
 
@@ -195,7 +195,7 @@ class Router {
     protected function findMatch($request_uri = null)
     {
         if ('' === trim($request_uri)) {
-            $request_uri = $this->request->getPathInfo();
+            $request_uri = self::getPathInfo();
         }
 
         $request_uri = '/' . ltrim($request_uri, '/');
@@ -286,6 +286,23 @@ class Router {
             return "({$this->conditions[$matches[0]]})";
         } else {
             return '([a-zA-Z0-9-/]+)';
+        }
+    }
+
+    /**
+     *
+     */
+    private static function getPathInfo()
+    {
+        if (isset($_SERVER['PATH_INFO'])) {
+            return $_SERVER['PATH_INFO'];
+        } else {
+            return parse_url(
+                str_replace(
+                    dirname($_SERVER['SCRIPT_NAME']),
+                    '',
+                    $_SERVER['REQUEST_URI']),
+                PHP_URL_PATH);
         }
     }
 }
