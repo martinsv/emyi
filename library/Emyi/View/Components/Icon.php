@@ -31,8 +31,8 @@ class Icon extends Element
      */
     public static function __callStatic($class, array $additional_classes = [])
     {
-        return (new static("i"))
-            ->addClass("icon-" . strtolower(String::phpize($class, '-')))
+        return (new static('i'))
+            ->addClass('icon-' . strtolower(String::phpize($class, '-')))
             ->addClass($additional_classes);
     }
 }

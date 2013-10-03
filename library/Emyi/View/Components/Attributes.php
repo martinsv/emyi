@@ -157,8 +157,8 @@ trait Attributes {
 
             if ('class' === $attribute) {
                 throw new UnexpectedValueException(
-                    "Cannot set the `class' attribute within setAttribute.
-                    Use addClass instead"
+                    'Cannot set the `class\' attribute within setAttribute.
+                    Use addClass instead'
                 );
             } elseif (null === $value) {
                 return $this->removeAttribute($attribute);

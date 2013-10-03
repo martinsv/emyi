@@ -24,8 +24,8 @@ class Button extends Element
      */
     public static function __callStatic($tag, array $attributes = [])
     {
-        return parent::__callStatic("button", [])
-            ->addClass("button $tag")
+        return parent::__callStatic('button', [])
+            ->addClass("btn btn-$tag")
             ->addContent($attributes[0]);
     }
 }

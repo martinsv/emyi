@@ -164,7 +164,6 @@ abstract class Controller
         $this->view              = new $class();
         $this->view->request_uri = $this->request->getRequestUri();
         $this->view->base_href   = $this->request->getBaseHref();
-        $this->view->path_info   = $this->request->getPathInfo();
 
         return $this->view;
     }
@@ -258,7 +257,7 @@ abstract class Controller
      */
     protected function checkAuth()
     {
-        throw new Exception("checkAuth is not implemented", 501);
+        throw new Exception('checkAuth is not implemented', 501);
     }
 
     /**

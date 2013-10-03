@@ -12,8 +12,6 @@ use Emyi\Db;
 
 /**
  * MVC abstract Model
- *
- * @protected
  */
 abstract class Model extends Db\Model
 {

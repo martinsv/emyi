@@ -35,11 +35,6 @@ class Request extends Base
     protected $uri = '/';
 
     /**
-     *
-     */
-    protected $path_info = '/';
-
-    /**
      * @var string one of the METHOD_* constants
      */
     protected $method = self::METHOD_GET;
@@ -68,21 +63,11 @@ class Request extends Base
         $DS = DIRECTORY_SEPARATOR;
         $BH = rtrim(str_replace($DS, '/', dirname($_SERVER['SCRIPT_NAME'])), $DS) . '/';
 
-        if (isset($_SERVER['PATH_INFO'])) {
-            $PI = $_SERVER['PATH_INFO'];
-        } else {
-            $PI = parse_url(str_replace(
-                dirname($_SERVER['SCRIPT_NAME']), '',
-                $_SERVER['REQUEST_URI']
-            ), PHP_URL_PATH);
-        }
-
         return (new static())
             ->getallheaders()
             ->setHash()
             ->setMethod($_SERVER['REQUEST_METHOD'])
             ->setBaseHref($BH)
-            ->setPathInfo($PI)
             ->setRequestUri($_SERVER['REQUEST_URI'])
             ->setVersion(substr($_SERVER['SERVER_PROTOCOL'], 5));
     }
@@ -109,11 +94,11 @@ class Request extends Base
             self::METHOD_PATCH
         ]);
 
-        $lines = explode('\r\n', $string);
+        $lines = explode("\r\n", $string);
 
         // first line must be Method/Uri/Version string
         $matches   = null;
-        $regex     = '"^(?P<method>{$methods})\s(?P<uri>[^ ]*)(?:\sHTTP\/(?P<version>\d+\.\d+)){0,1}"';
+        $regex     = "'^(?P<method>{$methods})\s(?P<uri>[^ ]*)(?:\sHTTP/(?P<version>\d+\.\d+)){0,1}'";
         $firstLine = array_shift($lines);
 
         if (!preg_match($regex, $firstLine, $matches)) {
@@ -193,32 +178,6 @@ class Request extends Base
         if (array_key_exists($param, $_GET)) {
             return $_GET[$param];
         }
-    }
-
-    /**
-     * Set the path info for this request
-     *
-     * @param string
-     * @return Emyi\Http\Request
-     */
-    public function setPathInfo($path_info)
-    {
-        if ('' === trim($path_info)) {
-            $path_info = '/';
-        }
-
-        $this->path_info = $path_info;
-        return $this;
-    }
-
-    /**
-     * Return the path info for this request
-     *
-     * @return string
-     */
-    public function getPathInfo()
-    {
-        return $this->path_info;
     }
 
     /**

@@ -79,8 +79,5 @@ ERR;
     exit(1);
 }
 
-$loader = include $loader;
-$loader->add('Emyi\\', '/var/data/projects/emyi-2.0/library/');
-
 // Ensure calls to a date/time function do not generate a E_NOTICE 
 date_default_timezone_set(Emyi\Util\Config::get('application/timezone'));

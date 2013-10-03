@@ -166,7 +166,7 @@ class Input extends Element
         }
 
         $data  = static::$mapping[$method];
-        $input = (new static("input"))
+        $input = (new static('input'))
             ->setAttribute($data['attributes'])
             ->addClass($data['class']);
 

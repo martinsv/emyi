@@ -6,10 +6,11 @@
  * @license http://opensource.org/licenses/MIT MIT License
  */
 
-namespace Emyi\Mvc;
+namespace Emyi\Util;
 
 use LogicException;
 use RuntimeException;
+use Emyi\Mvc\Controller;
 use Emyi\Util\String;
 use Emyi\Http\Request;
 
@@ -149,7 +150,7 @@ class Router {
                     $target['controller'] = $route['controller'];
                 }
 
-                $this->map("/" . ltrim($rule, "/"), $target, $route['conditions']);
+                $this->map('/' . ltrim($rule, '/'), $target, $route['conditions']);
             }
 
             self::$routes = array_reverse(self::$routes);

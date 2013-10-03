@@ -45,9 +45,9 @@ class Config
 
             // Language code for this installation. All choices can be found here:
             // http://www.i18nguy.com/unicode/language-identifiers.html
-            'language_code' => 'pt-br',
+            'language_code' => 'en-us',
             'version'       => '1.0.0',
-            'hash'          => '91e95be6b6634e3c21072dfcd661146728694326',
+            'hash'          => '',
             'build'         => ''
         ]
         // -application

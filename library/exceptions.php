@@ -61,31 +61,6 @@ namespace Emyi\Db {
     class Exception extends Emyi\Exception
     {
     }
-
-    /**
-     * Thrown when a record cannot be found.
-     */
-    class RecordNotFound extends Exception
-    {
-    }
-
-    /**
-     * Thrown by Model
-     */
-    class ModelException extends Exception
-    {
-    }
-}
-
-namespace Emyi\Db\Association {
-    use Emyi\Db;
-
-    /**
-     *
-     */
-    class Exception extends Db\Exception
-    {
-    }
 }
 
 //----------------------------------------------------------------------------
