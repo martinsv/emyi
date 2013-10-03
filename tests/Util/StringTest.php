@@ -17,6 +17,8 @@ class Test extends \PHPUnit_Framework_TestCase
      */
     public function test_pluralize()
     {
+        $this->assertEquals('aliases', String::pluralize('alias'));
+        $this->assertEquals('hives', String::pluralize('hive'));
     }
 
     /**
@@ -24,6 +26,8 @@ class Test extends \PHPUnit_Framework_TestCase
      */
     public function test_singularize()
     {
+        $this->assertEquals('bus', String::singularize('buses'));
+        $this->assertEquals('leaf', String::singularize('leaves'));
     }
 
     /**
@@ -31,6 +35,8 @@ class Test extends \PHPUnit_Framework_TestCase
      */
     public function test_phpize()
     {
+        $this->assertEquals('foo_bar', String::phpize('FooBar'));
+        $this->assertEquals('foo_bar', String::phpize('fooBar'));
     }
 
     /**
@@ -38,6 +44,9 @@ class Test extends \PHPUnit_Framework_TestCase
      */
     public function test_camelize()
     {
+        $this->assertEquals('FooBar', String::camelize('foo_bar', true));
+        $this->assertEquals('fooBar', String::camelize('foo-bar'));
+        $this->assertEquals('fooBar', String::camelize('foo bar'));
     }
 
     /**
@@ -45,6 +54,8 @@ class Test extends \PHPUnit_Framework_TestCase
      */
     public function test_isupper()
     {
+        $this->assertTrue(String::isupper('UPPER'));
+        $this->assertFalse(String::isupper('UPper'));
     }
 
     /**
@@ -52,6 +63,8 @@ class Test extends \PHPUnit_Framework_TestCase
      */
     public function test_islower()
     {
+        $this->assertTrue(String::islower('lower'));
+        $this->assertFalse(String::islower('Lower'));
     }
 
     /**
@@ -59,20 +72,7 @@ class Test extends \PHPUnit_Framework_TestCase
      */
     public function test_escape()
     {
-    }
-
-    /**
-     * @covers Emyi\Util\String::htmlspecialchars
-     */
-    public function test_htmlspecialchars()
-    {
-    }
-
-    /**
-     * @covers Emyi\Util\String::htmlentities
-     */
-    public function test_htmlentities()
-    {
+        $this->assertEquals('No new line\rhere', String::escape("No new line\rhere"));
     }
 
     /**
@@ -80,6 +80,7 @@ class Test extends \PHPUnit_Framework_TestCase
      */
     public function test_removeponctuation()
     {
+        $this->assertEquals('aeious', String::removeponctuation("aeiou's"));
     }
 
     /**
@@ -87,6 +88,7 @@ class Test extends \PHPUnit_Framework_TestCase
      */
     public function test_accentremove()
     {
+        $this->assertEquals('aeiou\'s', String::accentremove("áéíóú's"));
     }
 
     /**
@@ -94,13 +96,7 @@ class Test extends \PHPUnit_Framework_TestCase
      */
     public function test_strlen()
     {
-    }
-
-    /**
-     * @covers Emyi\Util\String::similar
-     */
-    public function test_similar()
-    {
+        $this->assertTrue(5 === String::strlen('áéíóú'));
     }
 
     /**
@@ -108,13 +104,16 @@ class Test extends \PHPUnit_Framework_TestCase
      */
     public function test_random()
     {
-    }
+        $rand1 = String::random(5);
+        $rand2 = String::random(5);
+        $rand3 = String::random(7);
 
-    /**
-     * @covers Emyi\Util\String::password
-     */
-    public function test_password()
-    {
-    }
+        // same length
+        $this->assertTrue(String::strlen($rand1) == String::strlen($rand2));
+        $this->assertFalse(String::strlen($rand1) == String::strlen($rand3));
 
+        $this->assertTrue($rand1 != $rand2);
+        $this->assertTrue($rand3 != $rand2);
+        $this->assertTrue($rand1 != $rand3);
+    }
 }

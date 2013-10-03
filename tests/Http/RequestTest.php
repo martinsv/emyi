@@ -30,21 +30,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Emyi\Http\Request::setPathInfo
-     * @covers Emyi\Http\Request::getPathInfo
-     * @covers Emyi\Http\Request::setBaseHref
-     * @covers Emyi\Http\Request::getBaseHref
-     * @covers Emyi\Http\Request::fromServer
-     */
-    public function testFromServer()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-    }
-
-    /**
      * @covers Emyi\Http\Request::fromString
      */
     public function testFromString()
@@ -56,26 +41,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('/foo', $request->getRequestUri());
         $this->assertEquals('1.1', $request->getVersion());
         $this->assertEquals('Some Content', $request->getContent());
-    }
-
-    /**
-     * @covers Emyi\Http\Request::get
-     */
-    public function testGet()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * @covers Emyi\Http\Request::setPathInfo
-     */
-    public function testSetPathInfo()
-    {
-        $ret = $this->object->setPathInfo('/foo/bar');
-        $this->assertInstanceOf('Emyi\Http\Request', $ret);
     }
 
     /**
@@ -152,17 +117,6 @@ class RequestTest extends \PHPUnit_Framework_TestCase
         $request = new Request();
         $request->addHeader('X_REQUESTED_WITH', 'XMLHttpRequest');
         $this->assertTrue($request->isXmlHttpRequest());
-    }
-
-    /**
-     * @covers Emyi\Http\Request::isSecure
-     */
-    public function testIsSecure()
-    {
-        // Remove the following lines when you implement this test.
-        $this->markTestIncomplete(
-          'This test has not been implemented yet.'
-        );
     }
 
     /**
