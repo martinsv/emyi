@@ -139,7 +139,7 @@ class String
         }
 
         // check for irregular plural forms
-        foreach (self::$irregular as $result => $pattern) {
+        foreach (self::$irregular as $pattern => $result) {
             if (preg_match($pattern, $str)) {
                 return preg_replace($pattern, $result, $str);
             }
@@ -279,7 +279,7 @@ class String
      */
     public static function strlen($str)
     {
-        return strlen(static::accent_remove($str));
+        return strlen(static::accentremove($str));
     }
 
     /**
