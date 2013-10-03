@@ -72,17 +72,6 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers Emyi\Http\Response::sendResponse
-     * @todo   Implement testSendResponse().
-     */
-    public function testSendResponse()
-    {
-        $string = "HTTP/1.1 200 OK\r\n\r\nFoo Bar";
-        $response = Response::fromString($string);
-        $response->addHeader('content-type', 'text/plain');
-    }
-
-    /**
      * @covers Emyi\Http\Response::renderStatusLine
      */
     public function testRenderStatusLine()
