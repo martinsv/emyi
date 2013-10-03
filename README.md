@@ -1,4 +1,4 @@
-# Emyi 0.1.0 [![Build Status](https://travis-ci.org/dritc/emyi.png?branch=master)](https://travis-ci.org/dritc/emyi)
+# Emyi 2.0-dev [![Build Status](https://travis-ci.org/douggr/emyi.png?branch=master)](https://travis-ci.org/douggr/emyi)
 Emyi is a sleek, intuitive, and powerful PHP micro-framework for faster and
 easier web development.
 
@@ -8,27 +8,13 @@ PHP 5.4
 ## Why Emyi?
 Why not?
 
-Emyi was written to meet three library requirements: good performance,
-standalone objects, and interoperability.
+Emyi was written to meet three library requirements: good performance, standalone objects, and interoperability.
 
 ## Installation and Usage
-https://dritc.github.io/emyi
+See INSTALL.md
 
 ## Issues
-https://github.com/dritc/emyi/issues
-
-## Versioning
-For transparency and insight into our release cycle, releases will be numbered with the follow format:
-
-`<major>.<minor>.<patch>`
-
-And constructed with the following guidelines:
-
-* Breaking backwards compatibility bumps the major
-* New additions without breaking backwards compatibility bumps the minor
-* Bug fixes and misc changes bump the patch
-
-For more information on semantic versioning, please visit http://semver.org/.
+https://github.com/douggr/emyi/issues
 
 ## License
 [MIT LICENSE](http://opensource.org/licenses/MIT)
