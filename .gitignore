@@ -1,0 +1,9 @@
+# local files
+*.~
+*.db
+*.lock
+
+# composer files
+vendor
+
+# emyi generated files

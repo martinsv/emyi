@@ -1,0 +1,37 @@
+{
+  "name": "douggr/emyi",
+  "description": "Sleek, intuitive and powerful PHP framework for faster and easier web development",
+  "type": "library",
+  "canonical": "https://github.com/douggr/emyi",
+  "keywords": ["mvc", "framework", "micro-framework"],
+  "homepage": "http://douggr.github.com/emyi",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Douglas G. R.",
+      "homepage": "http://douggr.github.io"
+    }
+  ],
+  "require": {
+    "php": ">=5.4",
+    "symfony/process": "~2.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~3.7",
+    "phpunit/phpunit-selenium": "~1.3"
+  },
+  "suggest": {
+    "ext-zip": "Enabling the zip extension allows you to unzip archives, and allows gzip compression of all internet traffic",
+    "ext-intl": "ext/intl for i18n features (included in default builds of PHP)",
+    "ext-openssl": "Enabling the openssl extension allows you to access https URLs for repositories and packages"
+  },
+  "autoload": {
+    "psr-0": {
+      "Emyi\\": "library/"
+    },
+    "files": [
+      "library/bootstrap.php",
+      "library/exceptions.php"
+    ]
+  }
+}
