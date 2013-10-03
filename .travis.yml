@@ -1,7 +1,3 @@
-before_script:
-  - mysql -e 'CREATE DATABASE emyi-200-dev;'
-  - psql  -c 'CREATE DATABASE emyi-200-dev;' -U postgres
-
 services:
   - memcache
 
