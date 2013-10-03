@@ -4,7 +4,7 @@
   "type": "library",
   "canonical": "https://github.com/douggr/emyi",
   "keywords": ["mvc", "framework", "micro-framework"],
-  "homepage": "http://douggr.github.com/emyi",
+  "homepage": "http://github.com/douggr/emyi",
   "license": "MIT",
   "authors": [
     {
@@ -13,8 +13,7 @@
     }
   ],
   "require": {
-    "php": ">=5.4",
-    "symfony/process": "~2.3"
+    "php": ">=5.4"
   },
   "require-dev": {
     "phpunit/phpunit": "~3.7",
