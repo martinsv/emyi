@@ -10,9 +10,10 @@ namespace Emyi\Mvc;
 
 use Traversable;
 use LogicException;
+use ReflectionClass;
 use Emyi\Util\Config;
 use Emyi\Util\String;
-use Emyi\Util\ReflectionClass;
+use Emyi\Util\Router;
 use Emyi\Http\Request;
 use Emyi\Http\Response;
 
@@ -52,7 +53,7 @@ abstract class Controller
 
     /**
      * A reflection for this object
-     * @var Emyi\Util\ReflectionClass
+     * @var ReflectionClass
      */
     protected $reflection;
 
