@@ -46,15 +46,6 @@ if (!defined('EAPP_PATH')) {
     define('EAPP_PATH', $dirname);
 }
 
-/**
- * Sets a user-defined error handler function
- * @internal
- */
-set_error_handler(function ($errno, $errstr, $errfile, $errline) {
-    throw new ErrorException($errstr, $errno);
-});
-// !set_error_handler ======*/
-
 // le error handler
 set_exception_handler(
     function (Exception $e) {
@@ -74,7 +65,7 @@ set_exception_handler(
         exit;
     }
 );
-// !set_exception_handler ==*/
+// !set_exception_handler */
 
 if (!file_exists($loader = __DIR__ . '/../vendor/autoload.php') &&
     !file_exists($loader = __DIR__ . '/../../../autoload.php'))
@@ -88,7 +79,8 @@ ERR;
     exit(1);
 }
 
-include $loader;
+$loader = include $loader;
+$loader->add('Emyi\\', '/var/data/projects/emyi-2.0/library/');
 
 // Ensure calls to a date/time function do not generate a E_NOTICE 
 date_default_timezone_set(Emyi\Util\Config::get('application/timezone'));
