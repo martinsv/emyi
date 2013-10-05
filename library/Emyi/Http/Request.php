@@ -147,7 +147,7 @@ class Request extends Base
         $BH = rtrim(str_replace($DS, '/', dirname($_SERVER['SCRIPT_NAME'])), $DS) . '/';
 
         return (new static())
-            ->getallheaders()
+            ->getallheaders(true)
             ->setHash()
             ->setMethod($_SERVER['REQUEST_METHOD'])
             ->setBaseHref($BH)

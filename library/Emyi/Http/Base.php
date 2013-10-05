@@ -119,16 +119,16 @@ abstract class Base extends Message {
     /**
      * @return Emyi\Http\Base
      */
-    protected function getallheaders()
+    protected function getallheaders($request_header = false)
     {
         if (function_exists('apache_request_headers')) {
-            $this->setHeaders(apache_request_headers());
+            $this->setHeaders(apache_request_headers(), $request_header);
         } else {
             foreach ($_SERVER as $key => $value) {
                 if (preg_match('"^HTTP_(?P<header>\S+)"', $key, $match)) {
-                    $this->addHeader($match['header'], $value);
+                    $this->addHeader($match['header'], $value, $request_header);
                 } elseif (preg_match('"^X[\s+|_|-]\S+"', $key)) {
-                    $this->addHeader($key, $value);
+                    $this->addHeader($key, $value, $request_header);
                 }
             }
         }
