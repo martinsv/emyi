@@ -11,6 +11,7 @@ namespace Emyi\View\Components;
 use UnexpectedValueException;
 use InvalidArgumentException;
 use Emyi\Util\String;
+use Emyi\Http\Request;
 
 /**
  * A simple trait to build HTML5 attributes
@@ -171,10 +172,16 @@ trait Attributes {
                 $this->id = String::htmlentities($value);
             } else {
                 switch ($attribute) {
+                    case 'src':
                     case 'href':
                     case 'action':
                     case 'data-url':
-                        //$this->attributes[$attribute] = String::link($value);
+                        if (false === strpos($value, '//') &&
+                            false === strpos($value, '://')&&
+                            '//'  !== substr($value, 0, 2))
+                        {
+                            $value = Request::baseHref() . ltrim($value, '/');
+                        }
 
                     default:
                         $this->attributes[$attribute] = String::htmlentities($value);
