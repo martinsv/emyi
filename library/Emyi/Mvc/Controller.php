@@ -77,6 +77,11 @@ abstract class Controller
     private $response;
 
     /**
+     * Hash for this controller
+     */
+    private $hash;
+
+    /**
      * ctor
      */
     final public function __construct(Request $request, $action, $controller = Router::DEFAULT_CONTROLLER)
@@ -86,6 +91,7 @@ abstract class Controller
         $this->request    = $request;
         $this->response   = new Response();
         $this->reflection = new ReflectionClass($this);
+        $this->setHash(md5($request->getRequestUri()));
 
         // execute any pre-init callback
         $this->init();
@@ -161,10 +167,15 @@ abstract class Controller
      */
     public function createView()
     {
-        $class                   = Config::get('view/engine');
-        $this->view              = new $class();
-        $this->view->request_uri = $this->request->getRequestUri();
-        $this->view->base_href   = $this->request->getBaseHref();
+        $class = Config::get('view/engine');
+        $this->view = (new $class())
+            ->setTemplateDirectory(dirname($this->reflection->getFileName()) . '/../Views')
+            ->setVariable([
+                'controller' => $this->controller,
+                'action'     => $this->action,
+                'requestUri' => $this->request->getRequestUri(),
+                'baseHref'   => $this->request->getBaseHref(),
+            ]);
 
         return $this->view;
     }
@@ -286,6 +297,25 @@ abstract class Controller
     protected function afterSendResponse()
     {
         //
+    }
+
+    /**
+     * Set the hash for this Controller
+     * @param string $hash
+     * @return self
+     */
+    protected function setHash($hash)
+    {
+        $this->hash = $hash;
+    }
+
+    /**
+     * Return the hash for this Controller
+     * @return string $hash
+     */
+    protected function getHash()
+    {
+        return $this->hash;
     }
 
     /**
