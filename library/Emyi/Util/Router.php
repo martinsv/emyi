@@ -96,9 +96,9 @@ class Router {
                 "Class `$class' not found", 503);
         }
 
-        if (preg_match('/^[^a-z]+/', $this->action)) {
+        if (preg_match('/^[^a-z]/i', $this->action)) {
             throw new RuntimeException(
-                "Action names must start with a letter", 503);
+                "Action names must start with a letter, `{$this->action}' given", 503);
         }
 
         $controller = new $class($this->request, $this->action, $this->controller);
