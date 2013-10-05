@@ -92,18 +92,23 @@ class Router {
 
         if (!class_exists($class, false)) {
             // should've been included in findFile
-            throw new LogicException("Class `$class' not found", 503);
+            throw new LogicException(
+                "Class `$class' not found", 503);
+        }
+
+        if (preg_match('/^[^a-z]+/', $this->action)) {
+            throw new RuntimeException(
+                "Action names must start with a letter", 503);
         }
 
         $controller = new $class($this->request, $this->action, $this->controller);
 
         if ($controller instanceof Controller) {
-            return call_user_func_array([$controller, 'execute'], $this->params);
+            return call_user_func_array([$controller, '_execute'], $this->params);
         }
 
         throw new LogicException(
-            "$class must be an instance of Emyi\\Mvc\\Controller", 503
-        );
+            "$class must be an instance of Emyi\\Mvc\\Controller", 503);
     }
 
     /**
@@ -181,8 +186,7 @@ class Router {
         if (!file_exists($filename = EAPP_PATH . "{$filename}.php")) {
             throw new RuntimeException(
                 "As of the matched route `{$this->matched_route}', `{$this->controller}'
-                 was expected to be found in $filename. But file not found", 503
-            );
+                 was expected to be found in $filename. But file not found", 503);
         }
 
         require_once $filename;
@@ -251,8 +255,7 @@ class Router {
 
         if (null === $this->matched_route) {
             throw new RuntimeException(
-                "There wasn't any route matching `{$request_uri}'", 404
-            );
+                "There wasn't any route matching `{$request_uri}'", 404);
         }
 
         return $this;

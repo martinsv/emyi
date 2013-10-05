@@ -100,7 +100,7 @@ abstract class Controller
     /**
      *
      */
-    final public function execute(/* params */)
+    final public function _execute(/* params */)
     {
         try {
             if (!$this->isValidRequest()) {
@@ -165,7 +165,7 @@ abstract class Controller
      *
      * @return object The view instance
      */
-    public function createView()
+    protected function createView()
     {
         $class = Config::get('view/engine');
         $this->view = (new $class())
@@ -185,7 +185,7 @@ abstract class Controller
      *
      * @return Emyi\Http\Response or null if the Response has not been created
      */
-    public function &getResponse()
+    protected function &getResponse()
     {
         return $this->response;
     }
@@ -195,7 +195,7 @@ abstract class Controller
      *
      * @return Emyi\Http\Request
      */
-    public function getRequest()
+    protected function getRequest()
     {
         return $this->request;
     }
