@@ -30,6 +30,11 @@ class Request extends Base
     const METHOD_PATCH   = 'PATCH';
 
     /**
+     * @var resource cURL handler
+     */
+    protected $ch;
+
+    /**
      * @var string
      */
     protected $uri = '/';
@@ -53,6 +58,84 @@ class Request extends Base
      *
      */
     private $request_hash;
+
+    /**
+     * Create new Request handle
+     *
+     * @param string $url The URL to fetch.
+     * @return Request
+     */
+    public static function open($url)
+    {
+        $request = new static();
+        $request->ch  = curl_init();
+        $request->uri = $url;
+        $request->setOption([
+            CURLOPT_URL             => $url,
+            CURLOPT_TIMEOUT         => 5,
+            CURLOPT_USERAGENT       => $request->getHeader('user-agent'),
+            CURLOPT_RETURNTRANSFER  => true,
+            CURLOPT_AUTOREFERER     => true,
+            CURLOPT_FOLLOWLOCATION  => true,
+            CURLOPT_HEADER          => true,
+        ]);
+
+        return $request;
+    }
+
+    /**
+     * Closes cURL resource and frees the memory. It is neccessary when
+     * you open a lot of requests and want to avoid fill up the memory.
+     *
+     * @return void
+     */
+    public function __destruct()
+    {
+        if (isset($this->ch)) {
+            curl_close($this->ch);
+        }
+    }
+
+    /**
+     * Set an option for a cURL transfer
+     *
+     * @param mixed $option The CURLOPT_XXX option to set.
+     * @param mixed $value The value to be set on option. 
+     * @return self
+     * @throws RequestException
+     */
+    public function setOption($option, $value = null)
+    {
+        if (is_resource($this->ch)) {
+            if (is_array($option)) {
+                curl_setopt_array($this->ch, $option);
+            } else {
+                curl_setopt($this->ch, $option, $value);
+            }
+        } else {
+            throw new RequestException(
+                'Request::setOption is meant to use within cURL requests only');
+        }
+
+        return $this;
+    }
+
+    /**
+     * Perform a cURL session.
+     *
+     * @return Response
+     * @throws RequestException
+     */
+    public function send()
+    {
+        if (is_resource($this->ch)) {
+            $content = curl_exec($this->ch);
+            return Response::fromString($content);
+        } else {
+            throw new RequestException(
+                'Request::send is meant to use within cURL requests only');
+        }
+    }
 
     /**
      * Build a Request object direct from the HTTP server
