@@ -115,6 +115,12 @@ abstract class Controller
             }
 
             $this->action = String::camelize($this->action);
+            $action = $this->reflection->getMethod($this->action);
+
+            if (!$action->isPublic()) {
+                throw new Exception(
+                    "`{$this->action}' must have public access (or maybe not an action?)", 500);
+            }
 
             if (!method_exists($this, $this->action)) {
                 // Not Found - method or action does not exists
@@ -130,7 +136,8 @@ abstract class Controller
             $this->beforeExecute();
 
             // execute the ACTION itself
-            call_user_func_array([$this, $this->action], func_get_args());
+            $action->invokeArgs($this, func_get_args());
+            //call_user_func_array([$this, $this->action], func_get_args());
 
             // process any callbacks before send the response
             $this->beforeSendResponse();
@@ -141,6 +148,8 @@ abstract class Controller
                 ->afterSendResponse();
 
             // all good :)
+        } catch (\ReflectionException $re) {
+            throw new Exception($re->getMessage(), 404);
         } catch (Exception $mvc_exception) {
             //print_r($mvc_exception);
             throw $mvc_exception;
