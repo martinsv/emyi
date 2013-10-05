@@ -223,6 +223,10 @@ abstract class Controller
                     $this->response->addHeader('content-type', 'text/plain; charset=utf-8');
                 }
             }
+        } else {
+            if (null === $this->response->getHeader('content-type')) {
+                $this->response->addHeader('content-type', 'text/html; charset=utf-8');
+            }
         }
 
         $this->response->addHeader('vary', 'Accept');
