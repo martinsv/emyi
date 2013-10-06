@@ -39,10 +39,10 @@ class Message {
      * @throws InvalidArgumentException
      * @return Emyi\Http\Message
      */
-    public function setMetadata($spec, $value = null, $request_header = false)
+    public function setMetadata($spec, $value = null)
     {
         if (is_scalar($spec)) {
-            $this->metadata[$this->formatName($spec, $request_header)] = $value;
+            $this->metadata[$this->formatName($spec)] = $value;
             return $this;
         }
 
@@ -54,7 +54,7 @@ class Message {
         }
 
         foreach ($spec as $key => $value) {
-            $this->metadata[$this->formatName($key, $request_header)] = $value;
+            $this->metadata[$this->formatName($key)] = $value;
         }
 
         return $this;
@@ -131,15 +131,15 @@ class Message {
      * @param string the message in any format
      * @return string formated name
      */
-    protected function formatName($name, $request_header = false)
+    protected function formatName($name)
     {
+        $name = strtolower($name);
         return ucfirst(
             preg_replace_callback(
-                '/([\s+|_|-]([a-z]))/',
-                function ($m) use ($request_header) {
-                    return strtoupper($m[$request_header ? 1 : 2]);
-                },
-                strtolower($name))
+                '/([\s+|_|-]([a-z0-9]))/',
+                function ($m) {
+                    return '-' . strtoupper($m[2]);
+                }, $name)
         );
     }
 }

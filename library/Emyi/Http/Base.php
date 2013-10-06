@@ -101,9 +101,9 @@ abstract class Base extends Message {
      * @param string header name
      * @return mixed $value
      */
-    public function getHeader($header, $request_header = false)
+    public function getHeader($header)
     {
-        return $this->headers->getMetadata($this->formatName($header, $request_header), null);
+        return $this->headers->getMetadata($this->formatName($header), null);
     }
 
     /**
@@ -119,16 +119,16 @@ abstract class Base extends Message {
     /**
      * @return Emyi\Http\Base
      */
-    protected function getallheaders($request_header = false)
+    protected function getallheaders()
     {
         if (function_exists('apache_request_headers')) {
-            $this->setHeaders(apache_request_headers(), $request_header);
+            $this->setHeaders(apache_request_headers());
         } else {
             foreach ($_SERVER as $key => $value) {
                 if (preg_match('"^HTTP_(?P<header>\S+)"', $key, $match)) {
-                    $this->addHeader($match['header'], $value, $request_header);
+                    $this->addHeader($match['header'], $value);
                 } elseif (preg_match('"^X[\s+|_|-]\S+"', $key)) {
-                    $this->addHeader($key, $value, $request_header);
+                    $this->addHeader($key, $value);
                 }
             }
         }
