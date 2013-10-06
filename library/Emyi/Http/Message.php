@@ -136,7 +136,7 @@ class Message {
         $name = strtolower($name);
         return ucfirst(
             preg_replace_callback(
-                '/([\s+|_|-]([a-z0-9]))/',
+                '/([\s+|_|-]+([a-z0-9]))/',
                 function ($m) {
                     return '-' . strtoupper($m[2]);
                 }, $name)
