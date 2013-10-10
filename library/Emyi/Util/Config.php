@@ -151,10 +151,10 @@ class Config
     static protected function readConfigFile()
     {
         if (!self::$is_read) {
-            if (file_exists($file = EAPP_PATH . self::PHP_FILE)) {
-                $properties = (array) require_once $file;
-            } elseif (file_exists($file = EAPP_PATH . self::INI_FILE)) {
+            if (file_exists($file = EAPP_PATH . self::INI_FILE)) {
                 $properties = parse_ini_file($file, true);
+            } elseif (file_exists($file = EAPP_PATH . self::PHP_FILE)) {
+                $properties = (array) require_once $file;
             } else {
                 $properties = [];
             }
