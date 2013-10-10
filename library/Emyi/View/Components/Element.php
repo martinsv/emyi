@@ -142,6 +142,7 @@ class Element
     public static function __callStatic($tag, array $attributes = [])
     {
         $html = new Element($tag);
+        $html->auto_id = false;
 
         foreach ($attributes as $attribute) {
             $html->setAttribute($attribute);

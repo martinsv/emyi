@@ -36,7 +36,7 @@ class A extends Element
 
         $return = (new static('a'))
             ->addContent($text)
-            ->setAttribute('href', Request::baseHref() . ltrim($url, '/'));
+            ->href(ltrim($url, '/'));
 
         if ($appendDataHref) {
             $return->data('href', $url);
