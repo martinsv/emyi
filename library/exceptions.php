@@ -20,7 +20,7 @@ namespace Emyi\Mvc {
     use Emyi;
 
     /**
-     *
+     * Represents an error raised by Emyi\Mvc
      */
     class Exception extends Emyi\Exception
     {
@@ -32,7 +32,7 @@ namespace Emyi\Auth {
     use Emyi;
 
     /**
-     * Thrown for configuration problems.
+     * Represents an error raised by Emyi\Auth
      */
     class Exception extends Emyi\Exception
     {
@@ -44,7 +44,7 @@ namespace Emyi\Util {
     use Emyi;
 
     /**
-     * Thrown for configuration issues.
+     * Represents an error raised by Emyi\Util
      */
     class ConfigException extends Emyi\Exception
     {
@@ -56,9 +56,16 @@ namespace Emyi\Db {
     use Emyi;
 
     /**
-     * Generic base exception for Emyi\Db specific errors.
+     * Represents an error raised by Emyi\Db
      */
     class Exception extends Emyi\Exception
+    {
+    }
+
+    /**
+     * Represents an error raised by Connection.
+     */
+    class ConnectionException extends Exception
     {
     }
 }
@@ -67,7 +74,9 @@ namespace Emyi\Db {
 namespace Emyi\Http {
     use Emyi;
 
-    // in use?
+    /*
+     * Represents an error raised by Emyi\Http
+     */
     class Exception extends Emyi\Exception
     {
     }
