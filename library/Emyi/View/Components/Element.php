@@ -150,18 +150,4 @@ class Element
 
         return $html;
     }
-
-    /**
-     * Create a new Element instance statically using $method as a tag
-     * and arguments as attributes.
-     *
-     * @param string tag name
-     * @param array attributes to set
-     * @return Emyi\View\Components\Element
-     * @internal
-     */
-    public static function create($tag, array $attributes = [])
-    {
-        return static::__callStatic($tag, $attributes);
-    }
 }
