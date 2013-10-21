@@ -67,6 +67,14 @@ class Request extends Base
      */
     public static function open($url)
     {
+        if (false === strpos($url, '://') && '//'  !== substr($url, 0, 2)) {
+            $val = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
+            $val.= $_SERVER['HTTP_HOST'];
+            $val.= static::baseHref() . ltrim($url, '/');
+
+            $url = $val;
+        }
+
         $request = new static();
         $request->ch  = curl_init();
         $request->uri = $url;
