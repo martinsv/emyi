@@ -34,15 +34,15 @@ class A extends Element
             $text = $url;
         }
 
-        $return = (new static('a'))
+        $component = (new static('a'))
             ->addContent($text)
             ->href(ltrim($url, '/'));
 
         if ($appendDataHref) {
-            $return->data('href', $url);
+            $component->data('href', $url);
         }
 
-        return $return;
+        return $component;
     }
 
     /**
