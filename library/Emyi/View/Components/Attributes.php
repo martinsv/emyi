@@ -176,12 +176,10 @@ trait Attributes {
                     case 'href':
                     case 'action':
                     case 'data-url':
-                        if (false === strpos($value, '//') &&
-                            false === strpos($value, '://')&&
-                            '//'  !== substr($value, 0, 2))
-                        {
+                        if (false === strpos($value, '://')&& '//'  !== substr($value, 0, 2)) {
                             $value = Request::baseHref() . ltrim($value, '/');
                         }
+                        break;
 
                     default:
                         $this->attributes[$attribute] = String::htmlentities($value);
