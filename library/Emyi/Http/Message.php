@@ -112,17 +112,17 @@ class Message {
      */
     public function __toString()
     {
-        $request = '';
+        $headers = '';
 
         foreach ($this->getMetadata() as $key => $value) {
-            $request .= sprintf(
+            $headers .= sprintf(
                 "%s: %s\r\n",
                 (string) $key,
                 (string) $value
             );
         }
 
-        return "{$request}\r\n{$this->getContent()}";
+        return "{$headers}\r\n{$this->getContent()}";
     }
 
     /**
@@ -134,6 +134,7 @@ class Message {
     protected function formatName($name)
     {
         $name = strtolower($name);
+
         return ucfirst(
             preg_replace_callback(
                 '/([\s+|_|-]+([a-z0-9]))/',
