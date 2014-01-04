@@ -3,7 +3,7 @@ Emyi is a sleek, intuitive, and powerful PHP micro-framework for faster and
 easier web development.
 
 ## Minimum Requirements
-PHP 5.4
+PHP 5.5
 
 ## Why Emyi?
 Why not?
