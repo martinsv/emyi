@@ -10,7 +10,7 @@ namespace EmyiTest\Util;
 
 use Emyi\Util\String;
 
-class Test extends \PHPUnit_Framework_TestCase
+class StringTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @covers Emyi\Util\String::pluralize
