@@ -41,4 +41,10 @@
         "!vendor"
       ]
   }
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0",
+      "dev-dev": "1.1-dev",
+    }
+  }
 }
