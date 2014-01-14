@@ -28,7 +28,7 @@ class A extends Element
      * @param array href
      * @return Emyi\View\Components\Element
      */
-    public static function create($url, $text = null, $appendDataHref = false)
+    public static function create_link($url, $text = null, $appendDataHref = false)
     {
         if (null === $text) {
             $text = $url;
