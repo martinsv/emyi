@@ -60,12 +60,38 @@ namespace Emyi\Db {
      */
     class Exception extends Emyi\Exception
     {
+        /**
+         * @return Emyi\Db\Exception
+         */
+        protected static final function unsupportedMethod($method)
+        {
+            return new self("'$method' is not supported by the driver");
+        }
     }
 
     /**
-     * Represents an error raised by Connection.
+     * Represents an error raised by Emyi\Db\Connection.
      */
     class ConnectionException extends Exception
+    {
+    }
+}
+
+namespace Emyi\Db\Driver {
+    use Emyi\Db;
+
+    /**
+     * Represents errors raised at Emyi\Db\Driver namespace.
+     */
+    class Exception extends Db\Exception
+    {
+    }
+
+    /**
+     * Represents an error raised by Emyi\Db\Driver\Descriptor and child
+     * classes.
+     */
+    class DescriptorException extends Exception
     {
     }
 }
