@@ -1,4 +1,4 @@
-# Emyi: [![Build Status](https://travis-ci.org/douggr/emyi.png?branch=master)](https://travis-ci.org/douggr/emyi) -dev: [![Build Status](https://travis-ci.org/douggr/emyi.png?branch=1.1)](https://travis-ci.org/douggr/emyi)
+# Emyi v1.0 [![Build Status](https://travis-ci.org/douggr/emyi.png?branch=master)](https://travis-ci.org/douggr/emyi) v1.1-dev: [![Build Status](https://travis-ci.org/douggr/emyi.png?branch=1.1)](https://travis-ci.org/douggr/emyi)
 Emyi is a sleek, intuitive, and powerful PHP micro-framework for faster and
 easier web development.
 
