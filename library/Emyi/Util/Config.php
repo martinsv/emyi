@@ -28,13 +28,13 @@ class Config
     /**
      *
      */
-    static private $is_read = false;
+    private static $is_read = false;
 
     /**
      * config defaults
      * @var array
      */
-    static private $defaults = [
+    private static $defaults = [
         'application' => [
             'author'        => 'Emyi',
             'name'          => '',
@@ -106,40 +106,46 @@ class Config
      * @param string The index with the value.
      * @return The value at the specified index or null
      */
-    static public function get($index)
+    public static function get($index)
     {
+        $data  = self::readConfigFile();
         $index = explode('/', $index);
+        $count = count($index);
 
-        switch (count($index)) {
+        if (!$data->offsetExists($index[0])) {
+            return null;
+        }
+
+        $value = $data->offsetGet($index[0]);
+
+        switch ($count) {
             case 2:
                 if ('*' === $index[1]) {
                     $return = [];
 
-                    foreach (self::getAll() as $idx => $params) {
-                        if (preg_match('@^{$index[0]}+@', $idx)) {
+                    foreach ($data as $idx => $params) {
+                        if (preg_match("@^{$index[0]}+@", $idx)) {
                             $return[$idx] = $params;
                         }
                     }
 
                     return $return;
                 } else {
-                    return self::readConfigFile()
-                        ->offsetGet($index[0])[$index[1]];
+                    return $value[$index[1]];
                 }
+
             case 3:
-                return self::readConfigFile()
-                    ->offsetGet($index[0])[$index[1]][$index[2]];
+                return $value[$index[1]][$index[2]];
 
             default:
-                return self::readConfigFile()
-                    ->offsetGet($index[0]);
+                return $value;
         }
     }
 
     /**
      *
      */
-    static public function getAll()
+    public static function getAll()
     {
         return self::readConfigFile();
     }
@@ -163,30 +169,6 @@ class Config
             self::$defaults = new ArrayObject(
                 array_replace_recursive(self::$defaults, $properties)
             );
-
-            $connections = [];
-            foreach (static::get('database/*') as $name => $conn) {
-                if ('' === $conn['name'] && '' === $conn['host']) {
-                    continue;
-                }
-
-                $name = substr($name, 9);
-
-                if (array_key_exists('dsn', $conn) && '' !== $conn['dsn']) {
-                    $connections[$name] = $conn['dsn'];
-                } else {
-                    /*!@
-                    $connections[$name] = http_build_url('a://b', [
-                        'scheme'    => $conn['engine'],
-                        'username'  => $conn['username'],
-                        'password'  => $conn['password'],
-                        'host'      => $conn['host'],
-                        'path'      => $conn['name'],
-                    ]);
-                    // */
-                    continue;
-                }
-            }
         }
 
         return self::$defaults;

@@ -162,6 +162,26 @@ class Response extends Base
     }
 
     /**
+     * @param string header name
+     * @param mixed $value
+     * @throws InvalidArgumentException
+     * @return Emyi\Http\Message
+     */
+    public function addCookie(
+        $name,
+        $value = null,
+        $expire = 0,
+        $path = '/',
+        $domain = null,
+        $secure = false
+    ) {
+        $cookie = new Cookie($name, $value, $expire, $path, $domain, $secure, false);
+        $this->headers->setMetadata('set-cookie', (string) $cookie, true);
+
+        return $this;
+    }
+
+    /**
      * Set HTTP status code and (optionally) message
      *
      * @param int $code

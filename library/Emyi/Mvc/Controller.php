@@ -100,7 +100,7 @@ abstract class Controller
     /**
      *
      */
-    final public function _execute(/* params */)
+    final public function execute(/* params */)
     {
         try {
             if (!$this->isValidRequest()) {

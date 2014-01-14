@@ -258,16 +258,67 @@ class Request extends Base
     }
 
     /**
-     * Return the request query parameters or a single query parameter
+     * Returns a single query parameter
      *
-     * @param string parameter name to retrieve, or null to get the whole
-     *      container
+     * @param string parameter name to retrieve
      * @return mixed
      */
     function get($param)
     {
         if (array_key_exists($param, $_GET)) {
             return $_GET[$param];
+        }
+    }
+
+    /**
+     * Returns a single post parameter
+     *
+     * @param string parameter name to retrieve
+     * @return mixed
+     */
+    function post($param)
+    {
+        if (array_key_exists($param, $_POST)) {
+            return $_POST[$param];
+        }
+    }
+
+    /**
+     * Return a single uploaded file ($_FILES) parameter
+     *
+     * @param string parameter name to retrieve
+     * @return mixed
+     */
+    function file($param)
+    {
+        if (array_key_exists($param, $_FILES)) {
+            return $_FILES[$param];
+        }
+    }
+
+    /**
+     * Returns a single cookie parameter
+     *
+     * @param string parameter name to retrieve
+     * @return mixed
+     */
+    function cookie($param)
+    {
+        if (array_key_exists($param, $_COOKIE)) {
+            return $_COOKIE[$param];
+        }
+    }
+
+    /**
+     * Returns a single session parameter
+     *
+     * @param string parameter name to retrieve
+     * @return mixed
+     */
+    function session($param)
+    {
+        if (array_key_exists($param, $_SESSION)) {
+            return $_SESSION[$param];
         }
     }
 

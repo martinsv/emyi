@@ -60,7 +60,7 @@ class View
      */
     public function __construct()
     {
-        $this->registerCallback('a', '\Emyi\View\Components\A::create');
+        $this->registerCallback('a', '\Emyi\View\Components\A::create_link');
         $this->registerCallback('e', '\Emyi\View\Components\Element::create');
         $this->registerCallback('escape', '\Emyi\Util\String::escape');
         $this->registerCallback('config', '\Emyi\Util\Config::get');

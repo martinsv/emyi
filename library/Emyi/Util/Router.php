@@ -104,7 +104,7 @@ class Router {
         $controller = new $class($this->request, $this->action, $this->controller);
 
         if ($controller instanceof Controller) {
-            return call_user_func_array([$controller, '_execute'], $this->params);
+            return call_user_func_array([$controller, 'execute'], $this->params);
         }
 
         throw new LogicException(
