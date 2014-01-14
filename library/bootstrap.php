@@ -67,7 +67,8 @@ set_exception_handler(
 );
 // !set_exception_handler */
 
-if (!file_exists($loader = __DIR__ . '/../vendor/autoload.php') &&
+if (!defined('EMYI_DEV') &&
+    !file_exists($loader = __DIR__ . '/../vendor/autoload.php') &&
     !file_exists($loader = __DIR__ . '/../../../autoload.php'))
 {
     echo <<<ERR
