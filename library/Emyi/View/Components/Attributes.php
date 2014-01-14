@@ -179,7 +179,6 @@ trait Attributes {
                         if (false === strpos($value, '://')&& '//'  !== substr($value, 0, 2)) {
                             $value = Request::baseHref() . ltrim($value, '/');
                         }
-                        break;
 
                     default:
                         $this->attributes[$attribute] = String::htmlentities($value);
