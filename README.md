@@ -1,6 +1,7 @@
-# Emyi v1.0 [![Build Status](https://travis-ci.org/douggr/emyi.png?branch=master)](https://travis-ci.org/douggr/emyi) v1.1-dev: [![Build Status](https://travis-ci.org/douggr/emyi.png?branch=1.1)](https://travis-ci.org/douggr/emyi)
-Emyi is a sleek, intuitive, and powerful PHP micro-framework for faster and
-easier web development.
+# Emyi v1.0
+[![Latest Stable Version](https://poser.pugx.org/douggr/emyi/v/stable.png)](https://packagist.org/packages/douggr/emyi) [![Latest Unstable Version](https://poser.pugx.org/douggr/emyi/v/unstable.png)](https://packagist.org/packages/douggr/emyi) [![Build Status](https://travis-ci.org/douggr/emyi.png?branch=master)](https://travis-ci.org/douggr/emyi)  [![License](https://poser.pugx.org/douggr/emyi/license.png)](https://packagist.org/packages/douggr/emyi)
+
+Sleek, intuitive, and powerful PHP micro-framework for faster and easier web development.
 
 ## Minimum Requirements
 PHP 5.5
@@ -8,32 +9,9 @@ PHP 5.5
 ## Why Emyi?
 Why not?
 
-Emyi was written to meet three library requirements: good performance, standalone objects, and interoperability.
+Emyi was written to meet three library requirements: good performance, standalone objects, and interoperability. It aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as RoR, ASP.NET MVC and even Sinatra.
 
-## Installation and Usage
-See INSTALL.md
+Emyi is accessible, yet powerful, providing tools needed for large and robust applications. A superb inversion of control container, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
 
 ## Issues
 https://github.com/douggr/emyi/issues
-
-## License
-[MIT LICENSE](http://opensource.org/licenses/MIT)
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
