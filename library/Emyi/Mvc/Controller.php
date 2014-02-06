@@ -180,10 +180,11 @@ abstract class Controller
         $this->view = (new $class())
             ->setTemplateDirectory(dirname($this->reflection->getFileName()) . '/../Views')
             ->setVariable([
-                'controller' => $this->controller,
-                'action'     => $this->action,
-                'requestUri' => $this->request->getRequestUri(),
-                'baseHref'   => $this->request->getBaseHref(),
+                'controller'  => $this->controller,
+                'action'      => $this->action,
+                'requestUri'  => $this->request->getRequestUri(),
+                'baseHref'    => $this->request->getBaseHref(),
+                'requestHash' => $this->request->getHash(),
             ]);
 
         return $this->view;
