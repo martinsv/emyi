@@ -14,6 +14,11 @@ namespace Emyi\View\Components;
 class Button extends Element
 {
     /**
+     * @var boolean
+     */
+    protected $auto_id = false;
+
+    /**
      * Create a new Element instance statically using $method as a tag
      * and arguments as attributes.
      *

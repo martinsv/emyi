@@ -16,6 +16,11 @@ use Emyi\Util\String;
 class Input extends Element
 {
     /**
+     * @var boolean
+     */
+    protected $auto_id = false;
+
+    /**
      *
      */
     public static $mapping = [

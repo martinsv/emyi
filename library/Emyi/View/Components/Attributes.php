@@ -222,7 +222,7 @@ trait Attributes {
         }
 
         foreach ($this->attributes as $attribute => $value) {
-            if ('' === $value) {
+            if ('' === trim($value)) {
                 $return .= " {$attribute}";
             } else {
                 $return .= " {$attribute}=\"{$value}\"";

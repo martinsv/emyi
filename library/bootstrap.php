@@ -11,7 +11,7 @@ if (defined('EMYI_VERSION_ID')) {
 }
 
 // Emy version
-define('EMYI_VERSION_ID', '2.0.2');
+define('EMYI_VERSION_ID', '1.0.0');
 
 // Ensure mcrypt constants are defined even if mcrypt extension is not loaded
 if (!defined('MCRYPT_MODE_CBC')) {

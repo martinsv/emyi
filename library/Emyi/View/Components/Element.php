@@ -45,14 +45,60 @@ class Element
      * @var boolean
      */
     private $is_void;
-    
+
+    /**
+     * Elements which will not receive auto-ids
+     * @var array
+     */
+    private static $skip_auto_id = [
+        'a',
+        'script',
+        'title',
+        'area',
+        'base',
+        'br',
+        'col',
+        'command',
+        'embed',
+        'button',
+        'b',
+        'i',
+        'strong',
+        'hr',
+        'img',
+        'input',
+        'keygen',
+        'link',
+        'meta',
+        'param',
+        'source',
+        'track',
+        'wbr',
+        'li',
+        'dt',
+        'dd',
+        'rt',
+        'rp',
+        'optgroup',
+        'option',
+        'colgroup',
+        'colgroup',
+        'table',
+        'thead',
+        'tbody',
+        'tfoot',
+        'tr',
+        'td',
+        'th',
+    ];
+
     //----------------------------------------------------------------- public
     /**
      *
      */
     final public function __construct($tag /* attributes? */)
     {
-        $this->tag     = $tag;
+        $this->tag = $tag;
 
         // do not need to make these next 2 arrays static since the spec won't
         // suffer big changes regarding them
@@ -95,6 +141,15 @@ class Element
     }
 
     /**
+     * Returns the tag name of this element
+     * @return string
+     */
+    public function getTag()
+    {
+        return $this->tag;
+    }
+
+    /**
      * @return Emyi\View\Components\Element
      */
     public function addContent($content, $escape = false)
@@ -121,6 +176,11 @@ class Element
      */
     public function __toString()
     {
+        $this->auto_id = null === $this->id && !in_array($this->tag, self::$skip_auto_id);
+        //if (null === $this->id && !in_array($this->tag, self::$skip_auto_id)) {
+        //    $this->auto_id = true;
+        //}
+
         $return = "<{$this->tag}{$this->toString()}>{$this->content}";
 
         if (!$this->omitted && !$this->is_void) {
