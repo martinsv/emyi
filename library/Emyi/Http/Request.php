@@ -261,7 +261,7 @@ class Request extends Base
      * Returns a single query parameter
      *
      * @param string parameter name to retrieve
-     * @return mixed
+     * @return mixed|null
      */
     function get($param)
     {
@@ -274,7 +274,7 @@ class Request extends Base
      * Returns a single post parameter
      *
      * @param string parameter name to retrieve
-     * @return mixed
+     * @return mixed|null
      */
     function post($param)
     {
@@ -287,7 +287,7 @@ class Request extends Base
      * Return a single uploaded file ($_FILES) parameter
      *
      * @param string parameter name to retrieve
-     * @return mixed
+     * @return mixed|null
      */
     function file($param)
     {
@@ -300,7 +300,7 @@ class Request extends Base
      * Returns a single cookie parameter
      *
      * @param string parameter name to retrieve
-     * @return mixed
+     * @return mixed|null
      */
     function cookie($param)
     {
@@ -313,7 +313,7 @@ class Request extends Base
      * Returns a single session parameter
      *
      * @param string parameter name to retrieve
-     * @return mixed
+     * @return mixed|null
      */
     function session($param)
     {
