@@ -1,8 +1,8 @@
 <?php
 /*
- * Emyi
+ * emyi
  *
- * @link http://github.com/douggr/Emyi for the canonical source repository
+ * @link http://github.com/douggr/emyi for the canonical source repository
  * @license http://opensource.org/licenses/MIT MIT License
  */
 
@@ -158,8 +158,7 @@ trait Attributes {
 
             if ('class' === $attribute) {
                 throw new UnexpectedValueException(
-                    'Cannot set the `class\' attribute within setAttribute.
-                    Use addClass instead'
+                    'Cannot set the `class\' attribute within setAttribute. Use addClass instead'
                 );
             } elseif (null === $value) {
                 return $this->removeAttribute($attribute);
@@ -176,7 +175,7 @@ trait Attributes {
                     case 'href':
                     case 'action':
                     case 'data-url':
-                        if (false === strpos($value, '://')&& '//'  !== substr($value, 0, 2)) {
+                        if (false === strpos($value, '://') && '//' !== substr($value, 0, 2)) {
                             $value = Request::baseHref() . ltrim($value, '/');
                         }
 

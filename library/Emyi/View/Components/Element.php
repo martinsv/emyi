@@ -1,8 +1,8 @@
 <?php
 /*
- * Emyi
+ * emyi
  *
- * @link http://github.com/douggr/Emyi for the canonical source repository
+ * @link http://github.com/douggr/emyi for the canonical source repository
  * @license http://opensource.org/licenses/MIT MIT License
  */
 
@@ -72,6 +72,7 @@ class Element
         'meta',
         'param',
         'source',
+        'span',
         'track',
         'wbr',
         'li',
@@ -100,8 +101,8 @@ class Element
     {
         $this->tag = $tag;
 
-        // do not need to make these next 2 arrays static since the spec won't
-        // suffer big changes regarding them
+        // do not need to make these next 2 arrays static since the spec
+        // won't suffer big changes regarding them
         $this->is_void = in_array($this->tag, [
             'area',
             'base',
@@ -177,10 +178,6 @@ class Element
     public function __toString()
     {
         $this->auto_id = null === $this->id && !in_array($this->tag, self::$skip_auto_id);
-        //if (null === $this->id && !in_array($this->tag, self::$skip_auto_id)) {
-        //    $this->auto_id = true;
-        //}
-
         $return = "<{$this->tag}{$this->toString()}>{$this->content}";
 
         if (!$this->omitted && !$this->is_void) {
@@ -202,7 +199,6 @@ class Element
     public static function __callStatic($tag, array $attributes = [])
     {
         $html = new Element($tag);
-        $html->auto_id = false;
 
         foreach ($attributes as $attribute) {
             $html->setAttribute($attribute);
@@ -210,7 +206,6 @@ class Element
 
         return $html;
     }
-
 
     /**
      * Create a new Element instance statically using $method as a tag
