@@ -67,6 +67,7 @@ class Config
 
         , 'view' => [
             'engine'        => '\\Emyi\\Mvc\\View',
+            'nsicons'       => 'fa fa',
         ]
         // -view
 
