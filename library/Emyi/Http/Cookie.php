@@ -10,8 +10,6 @@ namespace Emyi\Http;
 
 /**
  * Represents a Http Cookie
- *
- * @author Douglas G. Rodrigues <http://github.com/douggr>
  */
 class Cookie
 {

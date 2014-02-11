@@ -15,8 +15,6 @@ use InvalidArgumentException;
  * HTTP Response abstraction.
  * This class is an abstraction only, and is not intended to adhere with the
  * {@link specification http://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html#sec6}
- *
- * @author Douglas G. Rodrigues <http://github.com/douggr>
  */
 class Response extends Base
 {

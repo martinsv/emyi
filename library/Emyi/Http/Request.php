@@ -14,8 +14,6 @@ use InvalidArgumentException;
  * HTTP Request abstraction.
  * This class is an abstraction only, and is not intended to adhere with the
  * {@link specification http://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html#sec5}
- *
- * @author Douglas G. Rodrigues <http://github.com/douggr>
  */
 class Request extends Base
 {

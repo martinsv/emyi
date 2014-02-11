@@ -15,7 +15,6 @@ use InvalidArgumentException;
  * HTTP standard message (Request/Response)
  *
  * @link http://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html#sec5
- * @author Douglas G. Rodrigues <http://github.com/douggr>
  */
 class Message {
     /**

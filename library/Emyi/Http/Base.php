@@ -15,7 +15,6 @@ use InvalidArgumentException;
  * Base for HTTP Request and Response classes
  *
  * @link http://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4
- * @author Douglas G. Rodrigues <http://github.com/douggr>
  */
 abstract class Base extends Message {
     // The supported versions of the HTTP message 
