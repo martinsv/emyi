@@ -1,8 +1,8 @@
 <?php
 /*
- * Emyi
+ * emyi
  *
- * @link http://github.com/douggr/Emyi for the canonical source repository
+ * @link http://github.com/douggr/emyi for the canonical source repository
  * @license http://opensource.org/licenses/MIT MIT License
  */
 
@@ -62,8 +62,31 @@ class View
     {
         $this->registerCallback('a', '\Emyi\View\Components\A::create_link');
         $this->registerCallback('e', '\Emyi\View\Components\Element::create');
+        $this->registerCallback('i', '\Emyi\View\Components\Icon::__callStatic');
         $this->registerCallback('escape', '\Emyi\Util\String::escape');
         $this->registerCallback('config', '\Emyi\Util\Config::get');
+    }
+
+    /**
+     * Import a template file into the current view object
+     *
+     * @param string The template to load
+     * @param The root to search in
+     * @return void
+     */
+    public function import($template, $root = null)
+    {
+        if (null === $root) {
+            $root = $this->template_directory;
+        }
+
+        $view = (new static())
+            ->setLayout(null)
+            ->setTemplateDirectory($root)
+            ->loadTemplate($template)
+            ->setVariable($this->variables);
+
+        echo $view;
     }
 
     /**
