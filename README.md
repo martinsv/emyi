@@ -1,5 +1,5 @@
 # Emyi PHP Framework
-[![Latest Stable Version](https://poser.pugx.org/douggr/emyi/version.png)](https://packagist.org/packages/douggr/emyi) [![Latest Unstable Version](https://poser.pugx.org/douggr/emyi/v/unstable.png)](//packagist.org/packages/douggr/emyi) [![Build Status](https://travis-ci.org/douggr/emyi.png?branch=master)](https://travis-ci.org/douggr/emyi)  [![License](https://poser.pugx.org/douggr/emyi/license.png)](https://packagist.org/packages/douggr/emyi)
+[![Latest Stable Version](https://poser.pugx.org/douggr/emyi/version.png)](https://packagist.org/packages/douggr/emyi) [![Latest Unstable Version](https://poser.pugx.org/douggr/emyi/v/unstable.png)](//packagist.org/packages/douggr/emyi) [![Build Status](https://travis-ci.org/douggr/emyi.png?branch=master)](https://travis-ci.org/douggr/emyi)  [![Dependency Status](https://www.versioneye.com/user/projects/52f9e2feec1375680a000154/badge.png)](https://www.versioneye.com/user/projects/52f9e2feec1375680a000154) [![License](https://poser.pugx.org/douggr/emyi/license.png)](https://packagist.org/packages/douggr/emyi)
 
 Sleek, intuitive, and powerful PHP micro-framework for faster and easier web development.
 
