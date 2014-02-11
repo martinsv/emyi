@@ -8,6 +8,7 @@
 
 namespace Emyi\View\Components;
 
+use Emyi\Util\Config;
 use Emyi\Util\String;
 
 /**
@@ -29,10 +30,13 @@ class Icon extends Element
      * @return Emyi\View\Components\Element
      * @internal
      */
-    public static function __callStatic($class, array $additional_classes = [])
+    public static function __callStatic($class, array $adds = [])
     {
+        $namespace = Config::get('view/nsicons') . '-';
+        $class     = strtolower(String::phpize($class, '-'));
+
         return (new static('i'))
-            ->addClass('icon-' . strtolower(String::phpize($class, '-')))
-            ->addClass($additional_classes);
+            ->addClass($namespace . $class)
+            ->addClass($adds);
     }
 }
