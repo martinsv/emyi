@@ -84,8 +84,11 @@ abstract class Controller
     /**
      * ctor
      */
-    final public function __construct(Request $request, $action, $controller = Router::DEFAULT_CONTROLLER)
-    {
+    final public function __construct(
+        Request $request,
+        $action,
+        $controller = Router::DEFAULT_CONTROLLER
+    ) {
         $this->action     = $action;
         $this->controller = $controller;
         $this->request    = $request;
