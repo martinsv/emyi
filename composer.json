@@ -12,12 +12,19 @@
       "homepage": "http://douggr.github.io"
     }
   ],
+
   "require": {
-    "php": ">=5.4"
+    "php": "~5.4",
+    "ext-pcre": "*",
+    "ext-reflection": "*",
+    "ext-spl": "*",
+    "lib-curl": "*"
   },
+
   "require-dev": {
     "phpunit/phpunit": "~3.7"
   },
+
   "autoload": {
     "psr-0": {
       "Emyi\\": "library/"
@@ -27,15 +34,11 @@
       "library/exceptions.php"
     ]
   },
+
   "archive": {
-      "exclude": [
-        ".travis.yml",
-        "tests",
-        "phpunit.xml*",
-        "composer.phar",
-        "!vendor"
-      ]
+      "exclude": [".travis.yml", "tests", "phpunit.xml*", "composer.phar", "!vendor"]
   },
+
   "extra": {
     "branch-alias": {
       "dev-master": "1.0-dev"
