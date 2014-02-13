@@ -6,7 +6,7 @@
  * @license http://opensource.org/licenses/MIT MIT License
  */
 
-namespace EmyiTest\Http;
+namespace Emyi\Tests\Http;
 
 use Emyi\Http\Response;
 

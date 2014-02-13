@@ -6,7 +6,7 @@
  * @license http://opensource.org/licenses/MIT MIT License
  */
 
-namespace EmyiTest\Util;
+namespace Emyi\Tests\Http;
 
 use Emyi\Util\String;
 
