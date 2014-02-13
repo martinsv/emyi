@@ -71,6 +71,7 @@ if (!defined('EMYI_DEV') &&
     !file_exists($loader = __DIR__ . '/../vendor/autoload.php') &&
     !file_exists($loader = __DIR__ . '/../../../autoload.php'))
 {
+    header('Content-Type: text/plain; charset=utf-8');
     echo <<<ERR
 You must set up the project dependencies, run the following commands:
     \$ curl -sS https://getcomposer.org/installer | php
@@ -80,5 +81,5 @@ ERR;
     exit(1);
 }
 
-// Ensure calls to a date/time function do not generate a E_NOTICE 
+// Ensure calls to a date/time function do not generate a E_NOTICE
 date_default_timezone_set(Emyi\Util\Config::get('application/timezone'));
