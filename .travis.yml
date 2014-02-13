@@ -1,7 +1,7 @@
 language: php
 
 before_script:
-  - sh -c "if [ 'hhvm' != '$(phpenv version-name)' ]; then echo 'extension=memcached.so' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi"
+  - sh -c "if [ 'hhvm' != '$(phpenv version-name)' ]; then 'extension=memcached.so' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini && echo 'memcached.so loaded'; fi"
   - composer install --prefer-source
 
 services:
