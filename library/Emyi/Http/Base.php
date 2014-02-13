@@ -16,7 +16,8 @@ use InvalidArgumentException;
  *
  * @link http://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4
  */
-abstract class Base extends Message {
+abstract class Base extends Message
+{
     // The supported versions of the HTTP message 
     const VERSION_10 = '1.0';
     const VERSION_11 = '1.1';

@@ -17,7 +17,8 @@ use Emyi\Http\Request;
 /**
  * MVC Router
  */
-class Router {
+class Router
+{
     /**
      *
      */

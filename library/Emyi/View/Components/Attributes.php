@@ -16,7 +16,8 @@ use Emyi\Http\Request;
 /**
  * A simple trait to build HTML5 attributes
  */
-trait Attributes {
+trait Attributes
+{
     //-------------------------------------------------------------- constants
 
     //------------------------------------------------------------- properties
